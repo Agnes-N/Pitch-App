@@ -2,7 +2,7 @@
 {% import 'macros.html' as macro %}
 {% block content %}
 <div class="container" id="particles-js">
-    <h2 class="text-center" id="posts"  style="color: white"> Categories</h2>
+    <h2 class="text-center" id="posts"  style="color: white">Pitch categories</h2>
     <ul class="nav nav-pills nav-justified nav-fill" role="tablist">
         <li class="nav-item">
             <a id="cats" class="nav-link"  data-toggle="tab" href="#all" style="color: white"><strong>All Category</strong></a>
@@ -24,14 +24,14 @@
     <div class="tab-content">
         <div class="container tab-pane active" id="all"> <br>
         {{macro.display(quote_pitch)}} </div>
-        <div class="container tab-pane fade" id="event"> <br>
+        <div class="container tab-pane fade" id="quotes"> <br>
             {{macro.display(quote_pitch)}} </div>
 
-            <div class="container tab-pane fade" id="jobs"> <br>
+            <div class="container tab-pane fade" id="bible"> <br>
                 {{macro.display(quote_bible)}} </div>
-                <div class="container tab-pane fade" id="new"> <br>
+                <div class="container tab-pane fade" id="news"> <br>
                     {{macro.display(news_pitch)}} </div>
-            <div class="container tab-pane fade" id="new"> <br>
+            <div class="container tab-pane fade" id="general"> <br>
                         {{macro.display(general_pitch)}} </div>       
 
     </div>
