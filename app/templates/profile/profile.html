@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% import 'macros.html' as macro %}
 
 {% block content %}
 
@@ -51,10 +52,16 @@
         </div>
 </div>
 <hr>
-<div class="container tab-pane active" id="all"> <br>
-    {{macro.display(pitches)}} </div>
+
+<div class="container" id="particles-js">
+<!-- <h2 class="card-title text-center">All categories</h2> -->
+<div class="nav-item text-center">
+        <a id="cats" class="nav-link"  data-toggle="tab" href="#all" style="color: white"><strong>All Category</strong></a>
 </div>
-
+        <div class="tab-content">
+            <div class="container tab-pane active" id="all"> <br>
+            {{macro.display(pitches)}} </div>
+        </div>
+    </div>
 {% endblock %}
-
 
