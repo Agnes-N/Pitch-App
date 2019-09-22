@@ -19,7 +19,7 @@ This website will:
 3. Allow user to review pitches that have been posted.
 4. Allow user to select a category
 
-##Dependencies
+## Dependencies
 
 * alembic==1.2.0
 * blinker==1.4
