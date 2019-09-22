@@ -1,1 +1,1 @@
-SECRET_KEY='002'
+SECRET_KEY='1ab'
