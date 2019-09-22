@@ -15,10 +15,8 @@ def index():
     bible_pitch=Pitch.query.filter_by(category='Bible').all()
     news_pitch=Pitch.query.filter_by(category='News').all()
     general_pitch=Pitch.query.filter_by(category='News').all()
-    # category=Category.get_categories()
-    # return render_template('index.html',category=category)
 
-    return render_template('index.html',quote_pitch=quote_pitch,bible_pitch=bible_pitch,pitches=pitches,news_pitch=news_pitch)
+    return render_template('index.html',quote_pitch=quote_pitch,bible_pitch=bible_pitch,pitches=pitches,news_pitch=news_pitch,general_pitch=general_pitch)
 
 @main.route('/create_new',methods=['GET','POST'])
 @login_required
