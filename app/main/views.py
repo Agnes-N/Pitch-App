@@ -13,9 +13,9 @@ def index():
     quote_pitch=Pitch.query.filter_by(category='Quotes').all()
     bible_pitch=Pitch.query.filter_by(category='Bible').all()
     news_pitch=Pitch.query.filter_by(category='News').all()
-    general_pitch=Pitch.query.filter_by(category='News').all()
+    general_pitch=Pitch.query.filter_by(category='General').all()
 
-    return render_template('index.html',quote_pitch=quote_pitch,bible_pitch=bible_pitch,pitches=pitches,news_pitch=news_pitch,general_pitch=general_pitch)
+    return render_template('index.html',pitches=pitches,quote_pitch=quote_pitch,bible_pitch=bible_pitch,news_pitch=news_pitch,general_pitch=general_pitch)
 
 @main.route('/create_new',methods=['GET','POST'])
 @login_required
@@ -51,12 +51,13 @@ def comment(pitch_id):
 @main.route('/user/<name>')
 def profile(name):
 
+    pitches=Pitch.query.all()
     user=User.query.filter_by(username = name).first()
     user_id=current_user._get_current_object().id
     posts=Pitch.query.filter_by(user_id = user_id).all()
     if user is None:
         abort(404)
-    return render_template("profile/profile.html",user=user,posts=posts)
+    return render_template("profile/profile.html",user=user,posts=posts,itches=pitches)
 
 @main.route('/user/<name>/updateprofile',methods=['GET','POST'])
 @login_required

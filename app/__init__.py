@@ -7,6 +7,7 @@ from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_uploads import IMAGES,UploadSet,configure_uploads
 from flask_simplemde import SimpleMDE
+
 db=SQLAlchemy()
 mail=Mail()
 bootstrap=Bootstrap()
