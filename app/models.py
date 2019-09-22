@@ -19,7 +19,7 @@ class User(UserMixin,db.Model):
     pass_secure=db.Column(db.String(255))   
     bio=db.Column(db.String(255))
     profile_pic_path=db.Column(db.String(255))
-    # photoprofiles=db.relationship('PhotoProfile',backref='user',lazy="dynamic")
+   
     pitches=db.relationship('Pitch',backref='user',lazy="dynamic")
     comment=db.relationship('Comment',backref='user',lazy="dynamic")
     upvote=db.relationship('Upvote',backref='user',lazy="dynamic")
@@ -53,8 +53,6 @@ class Pitch(db.Model):
     post=db.Column(db.Text(),nullable = False)
     category=db.Column(db.String(255),index=True,nullable = False)
     votes=db.Column(db.Integer)
-
-    # time=db.Column(db.Datetime, default = datetime.utcnow)
 
     user_id=db.Column(db.Integer,db.ForeignKey('users.id'))
      
