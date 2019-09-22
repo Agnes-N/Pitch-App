@@ -21,7 +21,7 @@ This website will:
 
 ## Technologies Used
 
-Python Flask (in python) Postgresql (database)
+Python Flask (in python) Postgresql (database).
 
 ## Support and contact details
 
