@@ -11,13 +11,14 @@ from .forms import UpdateProfile,PitchForm,CommentForm
 @main.route('/')
 def index():
     pitches=Pitch.query.all()
-    job=Pitch.query.filter_by(category='Job').all()
-    event=Pitch.query.filter_by(category='Events').all()
-    news=Pitch.query.filter_by(category='News').all()
+    quote_pitch=Pitch.query.filter_by(category='Quotes').all()
+    bible_pitch=Pitch.query.filter_by(category='Bible').all()
+    news_pitch=Pitch.query.filter_by(category='News').all()
+    general_pitch=Pitch.query.filter_by(category='News').all()
     # category=Category.get_categories()
     # return render_template('index.html',category=category)
 
-    return render_template('index.html',job=job,event=event,pitches=pitches,news=news)
+    return render_template('index.html',quote_pitch=quote_pitch,bible_pitch=bible_pitch,pitches=pitches,news_pitch=news_pitch)
 
 @main.route('/create_new',methods=['GET','POST'])
 @login_required
