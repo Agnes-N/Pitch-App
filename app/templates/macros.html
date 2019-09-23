@@ -1,3 +1,11 @@
+{% macro displayCategoryList(category_list) %}
+   {% for category in category_list%}
+       <div>
+         <a href="{{url_for('main.category',id=category.id)}}"><p>{{category.cat_name|upper}}</p></a>
+       </div>
+   {% endfor %}
+{% endmacro %}
+
 {% macro display(piches) %}
 <div class="container-fluid">
     <div class="row">
@@ -22,7 +30,7 @@
                 {% else %}
                     <div class="card w-90 mb-3">
                         <div class="card-body">
-                            <p class="card-title"> Category has 0 posts</p>
+                            <p class="card-title text-center"> Category has 0 posts</p>
                         </div>
                     </div>
 				{% endif %}

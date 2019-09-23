@@ -2,20 +2,46 @@
 from flask import render_template,url_for,abort,redirect,request
 from . import main
 from flask_login import login_user,login_required,current_user
-from ..models import User,Pitch,Comment,Upvote,Downvote
+from ..models import User,Pitch,Comment,Upvote,Downvote,Category
 from .. import db,photos
-from .forms import UpdateProfile,PitchForm,CommentForm
+from .forms import UpdateProfile,PitchForm,CommentForm,CategoryForm
 
 
 @main.route('/')
 def index():
     pitches=Pitch.query.all()
+    category = Category.get_categories()
     quote_pitch=Pitch.query.filter_by(category='Quotes').all()
     bible_pitch=Pitch.query.filter_by(category='Bible').all()
     news_pitch=Pitch.query.filter_by(category='News').all()
     general_pitch=Pitch.query.filter_by(category='General').all()
 
-    return render_template('index.html',pitches=pitches,quote_pitch=quote_pitch,bible_pitch=bible_pitch,news_pitch=news_pitch,general_pitch=general_pitch)
+    return render_template('index.html',pitches=pitches,category=category,quote_pitch=quote_pitch,bible_pitch=bible_pitch,news_pitch=news_pitch,general_pitch=general_pitch)
+
+@main.route('/add/category', methods=['GET','POST'])
+@login_required
+def new_category():
+    '''
+    View new group route function that returns a page with a form to create a category
+    '''
+    form = CategoryForm()
+
+    if form.validate_on_submit():
+        name = form.name.data
+        new_category = Category(name=name)
+        new_category.save_category()
+
+        return redirect(url_for('main.index'))
+
+    
+    title = 'New category'
+    return render_template('new_category.html', category_form = form,title=title)
+
+# @main.route('/categories/<int:id>')
+# def category(id):
+#     category_ = Category.query.get(id)
+#     pitches = Pitch.query.filter_by(category=category_.id).all()
+#     return render_template('index.html', pitches=pitches)
 
 @main.route('/create_new',methods=['GET','POST'])
 @login_required
