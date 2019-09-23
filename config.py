@@ -2,7 +2,7 @@ import os
 
 
 class Config:
-    # SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL')
+
     SQLALCHEMY_TRECK_MODIFICATIONS=True
     SECRET_KEY=('SECRET_KEY')
     UPLOADED_PHOTOS_DEST='app/static/photos'
@@ -15,7 +15,7 @@ class Config:
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
     
-     # simple mde  configurations
+    # simple mde  configurations
     SIMPLEMDE_JS_IIFE = True
     SIMPLEMDE_USE_CDN = True
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wecode:123@localhost/oneminutepitch'
@@ -23,9 +23,6 @@ class Config:
 
 class ProdConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-
-# class DevConfig(Config):
-#     DEBUG = True
 
 class TestConfig(Config):
 
