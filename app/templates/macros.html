@@ -5,8 +5,8 @@
             {% for category in piches %}
 				<div class="col-md-4" >
                     <div class="thumbnail" id="carded">
-                        <h5 class="card-header"> {{category.title}}</h5>
-						<div class="card-body">
+                        <!-- <h5 class=""> {{category.title}}</h5> -->
+						<div class="card-body text-center" >
                             <p>{{category.post}}</p>
                             <p class="text-center">Category: {{category.category}}</p>
 							<footer class="blockquote-footer text-center" style="color:black"> Posted by: {{category.user.username}}</footer><br>
@@ -15,9 +15,9 @@
                                 <span class="foot"><a href="{{url_for('main.dislike',id=category.id)}}"><i class="fa fa-thumbs-down" style="font-size:18px;color:yellowgreen"></i></a>{{category.downvote.count()}}</span>
                                 <a href="{{url_for('main.comment',pitch_id=category.id)}}" class="btn btn-primary btn-sm">Comment</a>
                             </div>
-                            </div>
-                            </div>
                         </div>
+                    </div>
+                </div>
 					{% endfor %}
                 {% else %}
                     <div class="card w-90 mb-3">
