@@ -35,6 +35,7 @@ This website will:
 * Flask-SQLAlchemy==2.4.0
 * Flask-Uploads==0.2.1
 * Flask-WTF==0.14.2
+* gunicorn==19.9.0
 * itsdangerous==1.1.0
 * Jinja2==2.10.1
 * Mako==1.1.0
@@ -51,7 +52,7 @@ This website will:
 
 ## Technologies Used
 
-Python Flask (in python) Postgresql (database).
+Python Flask, Postgresql and Heroku.
 
 ## Support and contact details
 
