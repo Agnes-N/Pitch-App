@@ -18,31 +18,6 @@ def index():
 
     return render_template('index.html',pitches=pitches,category=category,quote_pitch=quote_pitch,bible_pitch=bible_pitch,news_pitch=news_pitch,general_pitch=general_pitch)
 
-@main.route('/add/category', methods=['GET','POST'])
-@login_required
-def new_category():
-    '''
-    View new group route function that returns a page with a form to create a category
-    '''
-    form = CategoryForm()
-
-    if form.validate_on_submit():
-        name = form.name.data
-        new_category = Category(name=name)
-        new_category.save_category()
-
-        return redirect(url_for('main.index'))
-
-    
-    title = 'New category'
-    return render_template('new_category.html', category_form = form,title=title)
-
-# @main.route('/categories/<int:id>')
-# def category(id):
-#     category_ = Category.query.get(id)
-#     pitches = Pitch.query.filter_by(category=category_.id).all()
-#     return render_template('index.html', pitches=pitches)
-
 @main.route('/create_new',methods=['GET','POST'])
 @login_required
 def new_pitch():
@@ -57,6 +32,19 @@ def new_pitch():
         return redirect(url_for('main.index'))
     return render_template('create_pitch.html',form=form)
 
+@main.route('/category',methods=['GET','POST'])
+@login_required
+def new_category():
+    form=CategoryForm()
+    if form.validate_on_submit():
+        title=form.title.data
+        post=form.post.data
+        # category=form.category.data
+        user_id=current_user
+        new_category_object=Category(post=post,user_id=current_user._get_current_object().id,title=title)
+        new_category_object.save_p()
+        return redirect(url_for('main.index'))
+    return render_template('category.html',form=form)
 
 @main.route('/comment/<int:pitch_id>',methods=['GET','POST'])
 @login_required
